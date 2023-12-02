@@ -1,5 +1,3 @@
-# yw_pbm
-
 # point-based-clothing
 Generative learning on point-based modeling for human clothing
 
