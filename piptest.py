@@ -34,7 +34,7 @@ os.system(f'rm {newpwd}/*')
 # rgb_file = 'Pip1'
 rgb_file=sys.argv[1]
 
-pb_sample = '/inf_input/'   #TO NOTE: user can modify if change to another one 
+pb_sample = '/samples/internet_images/'   #TO NOTE: user can modify if change to another one 
 
 # yw to note: modify mydir to result/rgb 
 os.system(f"cp {mydir+pb_sample+'images/'+rgb_file+'.jpg'} {newpwd}")
@@ -80,7 +80,7 @@ if cont==False:
 smplx_cmd ='python -m transfer_model --exp-cfg config_files/smplx2smpl.yaml'
 cmd = sp.getoutput(smplx_cmd)
 
-# due library issue i use another env for smplx
+# due library issue i use another env (py38) for smplx
 # subprocess.run(f'conda run -n py38 python {mydir+"/"}piptest2.py', shell=True)
 
 print("DONE converted SMPL-X to SMPL")
