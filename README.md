@@ -1,12 +1,22 @@
-# point-based-clothing
-Generative learning on point-based modeling for human clothing
+# Point-Based Modeling of Human Clothing
+
+Modify version of official PyTorch code repository of the paper "Point-Based Modeling of Human Clothing" (accepted to ICCV, 2021).
+
+<p align="center">
+  <b>
+  <a href="https://openaccess.thecvf.com/content/ICCV2021/html/Zakharkin_Point-Based_Modeling_of_Human_Clothing_ICCV_2021_paper.html">Paper</a> 
+  | <a href="https://www.ilia.ai/research/point-based-clothing">Project page</a>
+  | <a href="https://youtu.be/kFrAu415kDU">Video</a>
+    </b>
+</p>
+
 
 # Installation Guide 
 
 ## Ubuntu & Driver
 - Ubuntu Version: Ubuntu 20.04.6 LTS (Focal Fossa)
 
-- NVIDIA Driver: 470
+- NVIDIA Driver: 470.223.02
   
 ### CUDA 11.4 
 
@@ -42,7 +52,7 @@ Fail to run docker container from the original project. Here are some libraries 
 - `conda install -c bottler nvidiacub`
 - Use **Nightly** version `conda install pytorch3d -c pytorch3d-nightly`
 
-### Download Scatter (optional *if dont have library error)
+### Download Scatter (optional) *if dont have library error
 - [Source page](https://data.pyg.org/whl/torch-1.10.0+cu102.html)
 - Library to download at the webpage
   - torch_cluster-1.6.0+pt113cu116-cp39-cp39-linux_x86_64.whl
@@ -61,25 +71,98 @@ Fail to run docker container from the original project. Here are some libraries 
 
 
 ### Additional library 
+`pip install opencv-python`
+
+`pip install pyyaml`
+
+`pip install imageio`
+
+`pip install pandas`
+
+`pip install munch`
+
+`pip install smplx`
+
+`pip install open3d`
+
+`pip install imgaug`
+
+`pip install git+https://github.com/DmitryUlyanov/yamlenv`
+
+`pip install huepy`
+
+`pip install kornia==0.6.0`
+
+  ``` shell 
+git clone https://github.com/NVlabs/nvdiffrast
+cd nvdiffrast 
+pip install .
+  ```
+`pip install Ninja`
+
+`pip install chumpy`
+
 
 # Setup 
 
 ## Clone repo
-
+- [Source page](https://github.com/SamsungLabs/point_based_clothing)
 - Prerequisites: your nvidia driver should support cuda 10.2, Windows or Mac are not supported.
 - Clone repo:
   - `git clone https://github.com/izakharkin/point_based_clothing.git`
   - `cd point_based_clothing`
-  - `git submodule init && git submodule update`
 
-## Download data 
 
-- Download pre-trained model from [Google Drive ][https://drive.google.com/drive/folders/1CnEZpaNvbiYvWrhK_i51Y67ODh8vKHeh?usp=sharing] and save `outfit_code` and `appearance` to `out\` folder
+## Download data for Point-based modeling Inference 
+
+- Download pre-trained model from [Google Drive ](https://drive.google.com/drive/folders/1CnEZpaNvbiYvWrhK_i51Y67ODh8vKHeh?usp=sharing) and save `outfit_code` and `appearance` to `out\` folder
 - Download the SMPL neutral model from [SMPLify project page](https://smplify.is.tue.mpg.de/login.php): 
   - Register, go to the `Downloads` section, download `SMPLIFY_CODE_V2.ZIP`, and unpack it;
   - Move `smplify_public/code/models/basicModel_neutral_lbs_10_207_0_v1.0.0.pkl` to `data/smpl_models/SMPL_NEUTRAL.pkl`.
 - Download models checkpoints (~570 Mb): [Google Drive](https://drive.google.com/file/d/1l9BKJyMo3tfSTh1u6NMFP9VBxXCMf-ZJ/view?usp=share_link) and place them to the `checkpoints/` folder;
-- Download a sample data we provide to check the appearance fitting (~480 Mb): [Google Drive](https://drive.google.com/file/d/1QBZu9SLNoXdhLdTYABU-_KinjUAoQfw-/view?usp=share_link), unpack it, and place `psp/` folder to the `samples/` folder.
+- **(Optional: this is only for training)** Download a sample data we provide to check the appearance fitting (~480 Mb): [Google Drive](https://drive.google.com/file/d/1QBZu9SLNoXdhLdTYABU-_KinjUAoQfw-/view?usp=share_link), unpack it, and place `psp/` folder to the `samples/` folder.
 
 
+## Graphonomy 
 
+- [Source page](https://github.com/izakharkin/Graphonomy#inference-point_based_clothing)
+- In the `point_based_clothing/` directory, `git clone https://github.com/Gaoyiminggithub/Graphonomy`
+- Graphonomy's directory name should be `Graphonomy`
+- Library installation according to [original fork](https://github.com/Gaoyiminggithub/Graphonomy) of Graphonomy to obtain clothing segmentation mask in our format;
+- create `output/` folder
+- Get the [universal model weights](https://drive.google.com/file/d/1jO35B5GVQfJQWuL_KjYkVdc9bmRXnQJ4/view) and place them in `data/pretrained_model/` folder. We modified the original inference.py script for it to output the segmentation mask in the format of the point_based_clothing repo:
+
+```shell
+# Example of inference (test this seperately first to see if Graphonomy is working)
+python exp/inference/inference.py  \
+--loadmodel data/pretrained_model/universal_trained.pth \
+--img_path ./img/messi.jpg \
+--output_path ./output/ \
+--output_name /output_file_name
+```
+
+
+## ExPose 
+
+- [Source page](https://github.com/vchoutas/expose)
+- Install `expose` in the `point_based_clothing/` directory, ExPose's directory name should be `expose`
+- Installation of files and library according to [my ExPose fork](https://github.com/wyedoubleyou/expose_for_pbm) to obtain the SMPL-parameters (3D body pose and shape ground truth).
+
+
+## SMPL-X Transfer Model
+
+- [Source page](https://github.com/vchoutas/smplx)
+- Install `smplx` in the `point_based_clothing/` directory, SMPL-X's directory name should be `smplx`
+- Installation of files and library according to [my smplx fork](https://github.com/wyedoubleyou/yw_smplx.git) to transfer the SMPL-X into SMPL parameter. 
+
+
+## Point-based Modeling Inference process 
+
+- store your human model RGB image in `samples/internet_images/images/` folder, make sure the image is in **`.jpg`** format to prevent duplication, as the clothing segmentation mask from Graphonomy is in `.png` format
+- the `<rgb_file_name>` is the name of the RGB image without extension. E.g. "Pip1.jpg" the `<rgb_file_name>` will be "Pip1"
+- run the single pipline using the command below:
+
+  ``` shell 
+  python piptest.py <rgb_file_name>
+  
+  ```
