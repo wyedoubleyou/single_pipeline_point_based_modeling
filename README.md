@@ -42,7 +42,7 @@ Fail to run docker container from the original project. Here are some libraries 
 - `conda install -c bottler nvidiacub`
 - Use **Nightly** version `conda install pytorch3d -c pytorch3d-nightly`
 
-### Download Scatter (optional) *if dont have library error
+### Download Scatter (optional *if dont have library error)
 - [Source page](https://data.pyg.org/whl/torch-1.10.0+cu102.html)
 - Library to download at the webpage
   - torch_cluster-1.6.0+pt113cu116-cp39-cp39-linux_x86_64.whl
