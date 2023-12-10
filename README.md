@@ -166,7 +166,14 @@ python exp/inference/inference.py  \
   python piptest.py <rgb_file_name>
   
   ```
-- the whole inference process will be take around 1-2 minutes, and the final appearance result will be store in `out/appearance/` folder 
+  
+- `Pip1.jpg` is provided, you can try the code with command:
+- 
+  ``` shell 
+  python piptest.py Pip1
+  
+  ```
+- the whole inference process will be take around 1-2 minutes, and the final appearance result will be store in `out/appearance/` folder
 
 
 ## In case not able to run all model in one conda environment 
