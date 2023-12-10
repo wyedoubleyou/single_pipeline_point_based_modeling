@@ -169,7 +169,7 @@ python exp/inference/inference.py  \
 - the whole inference process will be take around 1-2 minutes, and the final appearance result will be store in `out/appearance/` folder 
 
 
-## Incase not able to run all model in one conda environment 
+## In case not able to run all model in one conda environment 
 
 - In `piptest.py` comment out line 80 & 81, then uncomment and modify line 85 according to your needs
 - For my case, i use _py38_ (another conda environment) and piptest2.py` for converting SMPL-X to SMPL parameter to prevent library conflict error. The command for the transfer model is store in `piptest2.py`
