@@ -167,3 +167,7 @@ python exp/inference/inference.py  \
   
   ```
 - the whole inference process will be take around 1-2 minutes, and the final appearance result will be store in `out/appearance/` folder 
+
+
+## Incase not able to run all model in one conda environment 
+
