@@ -166,3 +166,4 @@ python exp/inference/inference.py  \
   python piptest.py <rgb_file_name>
   
   ```
+- the whole inference process will be take around 1-2 minutes, and the final appearance result is store in `out/appearance/` folder 
