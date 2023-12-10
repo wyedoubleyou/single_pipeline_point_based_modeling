@@ -81,6 +81,7 @@ smplx_cmd ='python -m transfer_model --exp-cfg config_files/smplx2smpl.yaml'
 cmd = sp.getoutput(smplx_cmd)
 
 # due library issue i use another env (py38) for smplx
+# # example: subprocess.run(f'conda run -n <your conda env> python {mydir+"/"}<command store in another_file name>.py', shell=True)
 # subprocess.run(f'conda run -n py38 python {mydir+"/"}piptest2.py', shell=True)
 
 print("DONE converted SMPL-X to SMPL")
