@@ -171,3 +171,9 @@ python exp/inference/inference.py  \
 
 ## Incase not able to run all model in one conda environment 
 
+- In `piptest.py` comment out line 80 & 81, then uncomment and modify line 85 according to your needs
+- For my case, i use _py38_ (another conda environment) and piptest2.py` for converting SMPL-X to SMPL parameter to prevent library conflict error. The command for the transfer model is store in `piptest2.py`
+
+  ``` shell 
+  subprocess.run(f'conda run -n py38 python {mydir+"/"}piptest2.py', shell=True)
+  ``` 
