@@ -1,15 +1,6 @@
 # Point-Based Modeling of Human Clothing
 
-Modify version of official PyTorch code repository of the paper "Point-Based Modeling of Human Clothing" (accepted to ICCV, 2021).
-
-<p align="center">
-  <b>
-  <a href="https://openaccess.thecvf.com/content/ICCV2021/html/Zakharkin_Point-Based_Modeling_of_Human_Clothing_ICCV_2021_paper.html">Paper</a> 
-  | <a href="https://www.ilia.ai/research/point-based-clothing">Project page</a>
-  | <a href="https://youtu.be/kFrAu415kDU">Video</a>
-    </b>
-</p>
-
+Generative learning on point-based modeling for human clothing. The Graphonomy, ExPose, and directory is required to install separately and located in the main (point-based modeling) folder
 
 # Installation Guide 
 
