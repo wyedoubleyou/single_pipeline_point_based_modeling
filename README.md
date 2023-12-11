@@ -119,7 +119,7 @@ pip install .
 
 - Install [graphonomy](https://github.com/Gaoyiminggithub/Graphonomy) in the `point_based_clothing/` directory. The directory name should be `Graphonomy`
 - Installation of [ExPose](https://github.com/wyedoubleyou/expose_for_pbm) in `point_based_clothing/` directory, ExPose's directory name should be `expose`
-- Installation of [SMPL-X]((https://github.com/wyedoubleyou/yw_smplx.git) in `point_based_clothing/` directory, SMPL-X's directory name should be `smplx`
+- Installation of [SMPL-X](https://github.com/wyedoubleyou/yw_smplx.git) in `point_based_clothing/` directory, SMPL-X's directory name should be `smplx`
 
 
 ## Inference Process
