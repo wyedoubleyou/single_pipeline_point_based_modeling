@@ -101,7 +101,6 @@ pip install .
 
 ## Clone original repo
 - [Source page](https://github.com/SamsungLabs/point_based_clothing)
-- Prerequisites: your nvidia driver should support cuda 10.2, Windows or Mac are not supported.
 - Clone repo:
   - `git clone https://github.com/izakharkin/point_based_clothing.git`
   - `cd point_based_clothing`
@@ -117,15 +116,11 @@ pip install .
 - **(Optional: this is only for training)** Download a sample data we provide to check the appearance fitting (~480 Mb): [Google Drive](https://drive.google.com/file/d/1QBZu9SLNoXdhLdTYABU-_KinjUAoQfw-/view?usp=share_link), unpack it, and place `psp/` folder to the `samples/` folder.
 
 
-## Graphonomy 
+## Then,  
 
-- [Source page](https://github.com/izakharkin/Graphonomy#inference-point_based_clothing)
-- In the `point_based_clothing/` directory, `git clone https://github.com/Gaoyiminggithub/Graphonomy`
-- Graphonomy's directory name should be `Graphonomy`
-- Library installation according to [original fork](https://github.com/Gaoyiminggithub/Graphonomy) of Graphonomy to obtain clothing segmentation mask in our format;
+- Install [graphonomy](https://github.com/Gaoyiminggithub/Graphonomy) in the `point_based_clothing/` directory. The directory name should be `Graphonomy`
 - create `output/` folder
-- Get the [universal model weights](https://drive.google.com/file/d/1jO35B5GVQfJQWuL_KjYkVdc9bmRXnQJ4/view) and place them in `data/pretrained_model/` folder
-- You can test this command in the Graphonomy directory to check if there is any library or memory error: 
+- You can test is Graphonomy working or if there is any library or memory error: 
 
 ```shell
 # Example of inference
@@ -136,38 +131,23 @@ python exp/inference/inference.py  \
 --output_name /output_file_name
 ```
 
-
-## ExPose 
-
-- [Source page](https://github.com/vchoutas/expose)
-- Install `expose` in the `point_based_clothing/` directory, ExPose's directory name should be `expose`
-- Installation of files and library according to [my ExPose fork](https://github.com/wyedoubleyou/expose_for_pbm) to obtain the SMPL-parameters (3D body pose and shape ground truth).
+- Installation of [ExPose](https://github.com/wyedoubleyou/expose_for_pbm) in `point_based_clothing/` directory, ExPose's directory name should be `expose`
+- Installation of [SMPL-X]((https://github.com/wyedoubleyou/yw_smplx.git) in `point_based_clothing/` directory, SMPL-X's directory name should be `smplx`
 
 
-## SMPL-X Transfer Model
 
-- [Source page](https://github.com/vchoutas/smplx)
-- Install `smplx` in the `point_based_clothing/` directory, SMPL-X's directory name should be `smplx`
-- Installation of files and library according to [my smplx fork](https://github.com/wyedoubleyou/yw_smplx.git) to transfer the SMPL-X into SMPL parameter. 
+## To run the code, 
 
-
-## Point-based Modeling Inference process 
-
-- store your human model RGB image in `samples/internet_images/images/` folder, make sure the image is in **`.jpg`** format to prevent duplication, as the clothing segmentation mask from Graphonomy is in `.png` format
+- store your RGB image in `samples/internet_images/images/` folder, make sure the image is in **`.jpg`** format to prevent duplication, as the clothing segmentation mask from Graphonomy is in `.png` format
 - the `<rgb_file_name>` is the name of the RGB image without extension. E.g. "Pip1.jpg" the `<rgb_file_name>` will be "Pip1". Example of the command are as below:
-
-  ``` shell 
-  python piptest.py <rgb_file_name>
-  
-  ```
-  
-- To run the code, you can try with command:
+- You can try with command:
 
   ``` shell 
   python piptest.py Pip1
   
   ```
 - the whole inference process will be take around 1-2 minutes, and the final appearance result will be store in `out/appearance/` folder
+
 
 
 ## In case not able to run all model in one conda environment 
