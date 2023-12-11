@@ -167,7 +167,7 @@ python exp/inference/inference.py  \
   ```
   
 - `Pip1.jpg` is provided, you can try the code with command:
-- 
+
   ``` shell 
   python piptest.py Pip1
   
