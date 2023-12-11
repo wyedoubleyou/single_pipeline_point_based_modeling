@@ -159,8 +159,7 @@ python exp/inference/inference.py  \
 ## Point-based Modeling Inference process 
 
 - store your human model RGB image in `samples/internet_images/images/` folder, make sure the image is in **`.jpg`** format to prevent duplication, as the clothing segmentation mask from Graphonomy is in `.png` format
-- the `<rgb_file_name>` is the name of the RGB image without extension. E.g. "Pip1.jpg" the `<rgb_file_name>` will be "Pip1"
-- run the single pipline using the command below:
+- the `<rgb_file_name>` is the name of the RGB image without extension. E.g. "Pip1.jpg" the `<rgb_file_name>` will be "Pip1". Example of the single pipeline command are as below:
 
   ``` shell 
   python piptest.py <rgb_file_name>
