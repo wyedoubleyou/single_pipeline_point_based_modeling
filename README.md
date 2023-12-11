@@ -1,12 +1,15 @@
 # Point-Based Modeling of Human Clothing
 
-Generative learning on point-based modeling for human clothing. The Graphonomy, ExPose, and directory is required to install separately and located in the main (point-based modeling) folder
+ 
+This is Yi Wei code for "Generative learning on point-based modeling for human clothing", that combines [Graphonomy](https://github.com/izakharkin/Graphonomy#inference-point_based_clothing), [ExPose](https://github.com/vchoutas/expose), and [SMPL-X Transfer Model](https://github.com/vchoutas/smplx). The Graphonomy, ExPose, and SMPL-X directory is required to install separately and store in the main (point-based modeling) folder. 
 
 # Installation Guide 
 
-## Ubuntu & Driver
-- Ubuntu Version: Ubuntu 20.04.6 LTS (Focal Fossa)
+This project is preferable to conduct in Ubuntu Desktop. The Ubuntu Desktop version and other software layes that I use is listed below. The installation guide for the CUDA, CuDNN, conda environment, and python libraries are given as below.  
 
+## Ubuntu & Driver
+
+- Ubuntu Version: Ubuntu 20.04.6 LTS (Focal Fossa)
 - NVIDIA Driver: 470.223.02
   
 ### CUDA 11.4 
@@ -15,7 +18,6 @@ Generative learning on point-based modeling for human clothing. The Graphonomy, 
   - `wget https://developer.download.nvidia.com/compute/cuda/11.4.0/local_installers/cuda_11.4.0_470.42.01_linux.run`
   - `sudo sh cuda_11.4.0_470.42.01_linux.run`
   - `gedit ~/.bashrc`
-
 
 - Conda Initialize
     - `export PATH=/usr/local/cuda/bin${PATH:+:${PATH}}`
@@ -32,15 +34,15 @@ Generative learning on point-based modeling for human clothing. The Graphonomy, 
 
 ## Python Library 
 
-Fail to run docker container from the original project. Here are some libraries required to installed manually in order to run the project code. 
+Here are some libraries required to installed manually in order to run the project code. Pytorch3d version 1.13.0 is required. 
 
-### Download Pytorch3d 
+### Create conda environment with python version 3.9 and installed Pytorch3d 
 - [Source page](https://github.com/facebookresearch/pytorch3d/blob/main/INSTALL.md)
 - `conda create -n pytorch3d python=3.9`
 - `conda activate pytorch3d`
 - `conda install pytorch=1.13.0 torchvision pytorch-cuda=11.6 -c pytorch -c nvidia`
 - `conda install -c fvcore -c iopath -c conda-forge fvcore iopath`
-- `conda install -c bottler nvidiacub`
+- `conda install -c bottler nvidiacub` 
 - Use **Nightly** version `conda install pytorch3d -c pytorch3d-nightly`
 
 ### Download Scatter (optional) *if dont have library error
@@ -52,7 +54,7 @@ Fail to run docker container from the original project. Here are some libraries 
   - torch_spline_conv-1.2.1+pt113cu116-cp39-cp39-linux_x86_64.whl
   - pyg_lib-0.2.0+pt113cu116-cp39-cp39-linux_x86_64.whl
 
-- Run the **Download** directory 
+- In the **Download** directory 
   - `pip install torch_cluster-1.6.0+pt113cu116-cp39-cp39-linux_x86_64.whl`
   - `pip install torch_sparse-0.6.15+pt113cu116-cp39-cp39-linux_x86_64.whl`
   - `pip install torch_scatter-2.0.9-cp39-cp39-linux_x86_64.whl`
@@ -61,7 +63,8 @@ Fail to run docker container from the original project. Here are some libraries 
   - `pip install torch-geometric`
 
 
-### Additional library 
+### Other dependencies
+
 `pip install opencv-python`
 
 `pip install pyyaml`
@@ -94,9 +97,9 @@ pip install .
 `pip install chumpy`
 
 
-# Setup 
+# To run the code, 
 
-## Clone repo
+## Clone original repo
 - [Source page](https://github.com/SamsungLabs/point_based_clothing)
 - Prerequisites: your nvidia driver should support cuda 10.2, Windows or Mac are not supported.
 - Clone repo:
@@ -104,7 +107,7 @@ pip install .
   - `cd point_based_clothing`
 
 
-## Download data for Point-based modeling Inference 
+## Download pre-trained data for Point-based modeling Inference process
 
 - Download pre-trained model from [Google Drive ](https://drive.google.com/drive/folders/1CnEZpaNvbiYvWrhK_i51Y67ODh8vKHeh?usp=sharing) and save `outfit_code` and `appearance` to `out\` folder
 - Download the SMPL neutral model from [SMPLify project page](https://smplify.is.tue.mpg.de/login.php): 
@@ -121,10 +124,11 @@ pip install .
 - Graphonomy's directory name should be `Graphonomy`
 - Library installation according to [original fork](https://github.com/Gaoyiminggithub/Graphonomy) of Graphonomy to obtain clothing segmentation mask in our format;
 - create `output/` folder
-- Get the [universal model weights](https://drive.google.com/file/d/1jO35B5GVQfJQWuL_KjYkVdc9bmRXnQJ4/view) and place them in `data/pretrained_model/` folder. We modified the original inference.py script for it to output the segmentation mask in the format of the point_based_clothing repo:
+- Get the [universal model weights](https://drive.google.com/file/d/1jO35B5GVQfJQWuL_KjYkVdc9bmRXnQJ4/view) and place them in `data/pretrained_model/` folder
+- You can test this command in the Graphonomy directory to check if there is any library or memory error: 
 
 ```shell
-# Example of inference (test this seperately first to see if Graphonomy is working)
+# Example of inference
 python exp/inference/inference.py  \
 --loadmodel data/pretrained_model/universal_trained.pth \
 --img_path ./img/messi.jpg \
@@ -150,14 +154,14 @@ python exp/inference/inference.py  \
 ## Point-based Modeling Inference process 
 
 - store your human model RGB image in `samples/internet_images/images/` folder, make sure the image is in **`.jpg`** format to prevent duplication, as the clothing segmentation mask from Graphonomy is in `.png` format
-- the `<rgb_file_name>` is the name of the RGB image without extension. E.g. "Pip1.jpg" the `<rgb_file_name>` will be "Pip1". Example of the single pipeline command are as below:
+- the `<rgb_file_name>` is the name of the RGB image without extension. E.g. "Pip1.jpg" the `<rgb_file_name>` will be "Pip1". Example of the command are as below:
 
   ``` shell 
   python piptest.py <rgb_file_name>
   
   ```
   
-- `Pip1.jpg` is provided, you can try the code with command:
+- To run the code, you can try with command:
 
   ``` shell 
   python piptest.py Pip1
