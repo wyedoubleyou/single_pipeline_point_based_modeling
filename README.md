@@ -100,10 +100,8 @@ pip install .
 # To run the code, 
 
 ## Clone original repo
-- [Source page](https://github.com/SamsungLabs/point_based_clothing)
-- Clone repo:
-  - `git clone https://github.com/izakharkin/point_based_clothing.git`
-  - `cd point_based_clothing`
+- `git clone https://github.com/izakharkin/point_based_clothing.git`
+- `cd point_based_clothing`
 
 
 ## Download pre-trained data for Point-based modeling Inference process
@@ -119,28 +117,15 @@ pip install .
 ## Then,  
 
 - Install [graphonomy](https://github.com/Gaoyiminggithub/Graphonomy) in the `point_based_clothing/` directory. The directory name should be `Graphonomy`
-- create `output/` folder
-- You can test is Graphonomy working or if there is any library or memory error: 
-
-```shell
-# Example of inference
-python exp/inference/inference.py  \
---loadmodel data/pretrained_model/universal_trained.pth \
---img_path ./img/messi.jpg \
---output_path ./output/ \
---output_name /output_file_name
-```
-
 - Installation of [ExPose](https://github.com/wyedoubleyou/expose_for_pbm) in `point_based_clothing/` directory, ExPose's directory name should be `expose`
 - Installation of [SMPL-X]((https://github.com/wyedoubleyou/yw_smplx.git) in `point_based_clothing/` directory, SMPL-X's directory name should be `smplx`
 
 
-
-## To run the code, 
+## Inference Process
 
 - store your RGB image in `samples/internet_images/images/` folder, make sure the image is in **`.jpg`** format to prevent duplication, as the clothing segmentation mask from Graphonomy is in `.png` format
-- the `<rgb_file_name>` is the name of the RGB image without extension. E.g. "Pip1.jpg" the `<rgb_file_name>` will be "Pip1". Example of the command are as below:
-- You can try with command:
+- the `<rgb_file_name>` is the name of the RGB image without extension. E.g. "Pip1.jpg" the `<rgb_file_name>` will be "Pip1"
+- To run the code:
 
   ``` shell 
   python piptest.py Pip1
