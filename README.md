@@ -123,13 +123,20 @@ pip install .
 ## Inference Process
 
 - store your RGB image in `samples/internet_images/images/` folder, make sure the image is in **`.jpg`** format to prevent duplication, as the clothing segmentation mask from Graphonomy is in `.png` format
-- the `<rgb_file_name>` is the name of the RGB image without extension. E.g. "Pip1.jpg" the `<rgb_file_name>` will be "Pip1"
-- To run the code:
+- the `<rgb_file_name>` is the name of the RGB image without extension. E.g. "Pip1.jpg" the `<rgb_file_name>` will be "Pip1". Example of the command are as below:
+  
+  ``` shell 
+  python piptest.py <rgb_file_name>
+  
+  ```
+  
+- To run the code, you can try with command:
 
   ``` shell 
   python piptest.py Pip1
   
   ```
+
 - the whole inference process will be take around 1-2 minutes, and the final appearance result will be store in `out/appearance/` folder
 
 
