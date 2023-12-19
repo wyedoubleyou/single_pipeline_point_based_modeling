@@ -13,8 +13,8 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import matplotlib.image as mpimg
 from pathlib import Path 
-from compare import first_px_coor, centering_object
-from iou import mov_segm, iou_calc
+# from compare import first_px_coor, centering_object
+# from iou import mov_segm, iou_calc
 
 sys.path.append(os.path.abspath('')+'/src')
 
