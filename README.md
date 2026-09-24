@@ -139,6 +139,14 @@ pip install .
 
 - the whole inference process will be take around 1-2 minutes, and the final appearance result will be store in `out/appearance/` folder
 
+Input Images: 
+<img width="1280" height="438" alt="chp5_mc_crop" src="https://github.com/user-attachments/assets/31c6b965-0dbf-4ef9-8db1-50cc4e4e8138" />
+
+Segmentation mask generated using Graphonomy: 
+<img width="1280" height="415" alt="chp5_grp_mc" src="https://github.com/user-attachments/assets/ce7c78e7-9cb5-42bd-afa6-e5f2ff2631a6" />
+
+SMPL-X model generated using Expose: 
+<img width="1195" height="404" alt="chp5_sm_mc" src="https://github.com/user-attachments/assets/45c86af8-5dcc-443a-af8c-1973d0e94e1e" />
 
 
 ## In case not able to run all model in one conda environment 
