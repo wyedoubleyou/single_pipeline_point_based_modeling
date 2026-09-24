@@ -1,14 +1,21 @@
+# Single-Pipeline Point-Based Clothing Modeling
 
-This repository contains a reproduction and integration of the work presented in “Generative Learning on Point-Based Modeling for Human Clothing”, based on the original implementation from [point_based_clothing](https://github.com/UmairAhmadBaltoro/point_based_clothing). 
+This repository integrates the inference steps for [*Generative Learning on Point-Based Modeling for Human Clothing*](https://github.com/UmairAhmadBaltoro/point_based_clothing) into one command. Given a `.jpg` image, the pipeline estimates a body model, generates a clothing segmentation mask, and renders the selected learned outfit on the person.
 
-The original workflow relies on several external components for inference. In this reproduction, these components are integrated into a single end-to-end inference pipeline that automatically generates the required human segmentation masks and SMPL-X parameters before performing the point-based clothing modeling.
+This is a reproduction and pipeline integration of the original project. The external repositories, model files, and pretrained weights still need to be installed or downloaded separately. The entry point is `piptest.py`; this repository does not train the underlying models from scratch.
 
-The pipeline integrates:
-- **[Graphonomy](https://github.com/izakharkin/Graphonomy#inference-point_based_clothing)**  for human parsing and segmentation mask generation.
-- **[ExPose](https://github.com/vchoutas/expose)** to estimate SMPL-X body parameters from the input image.
-- **[SMPL-X Transfer Model](https://github.com/vchoutas/smplx)** SMPL-X model processing and parameter transfer to SMPL model.
-- **[point_based_clothing](https://github.com/UmairAhmadBaltoro/point_based_clothing)** for final point-based human clothing generation.
+## Pipeline
 
+| Stage | Component | Result |
+| --- | --- | --- |
+| Body estimation | [ExPose](https://github.com/wyedoubleyou/expose_for_pbm) | SMPL-X mesh for the input image |
+| Body conversion | [SMPL-X transfer](https://github.com/wyedoubleyou/yw_smplx) | SMPL parameters formatted for the clothing model |
+| Human parsing | [Graphonomy](https://github.com/Gaoyiminggithub/Graphonomy) | Clothing segmentation mask |
+| Outfit inference | [point_based_clothing](https://github.com/UmairAhmadBaltoro/point_based_clothing) | Rendered image of the person wearing the selected outfit |
+
+`piptest.py` coordinates these components. It copies the intermediate SMPL parameters and mask into `samples/internet_images/`, then calls the appearance inference in `hello2.py`. The provided appearance inference selects the `male-3-casual` outfit and writes a rendered PNG; edit `style_pid` and its corresponding checkpoint configuration in `hello2.py` to use another available outfit.
+
+<img width="1280" height="611" alt="Point-based clothing pipeline overview" src="https://github.com/user-attachments/assets/713a0279-4c14-4f6e-a6b8-6e8ee3992927" />
 
 ## Pipeline Overview
 
