@@ -134,7 +134,7 @@ pip install .
 # To run the code, 
 
 ## Clone original repo
-- `git clone https://github.com/UmairAhmadBaltoro/point_based_clothing.git'
+- `git clone https://github.com/UmairAhmadBaltoro/point_based_clothing.git`
 - `cd point_based_clothing`
 
 
