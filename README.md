@@ -1,5 +1,38 @@
 
-This for "Generative learning on point-based modeling for human clothing", that combines [Graphonomy](https://github.com/izakharkin/Graphonomy#inference-point_based_clothing), [ExPose](https://github.com/vchoutas/expose), and [SMPL-X Transfer Model](https://github.com/vchoutas/smplx). The Graphonomy, ExPose, and SMPL-X directory is required to install separately and store in the main (point-based modeling) folder. 
+This repository contains a reproduction and integration of the work presented in “Generative Learning on Point-Based Modeling for Human Clothing”, based on the original implementation from [point_based_clothing](https://github.com/UmairAhmadBaltoro/point_based_clothing). 
+
+The original workflow relies on several external components for inference. In this reproduction, these components are integrated into a single end-to-end inference pipeline that automatically generates the required human segmentation masks and SMPL-X parameters before performing the point-based clothing modeling.
+
+The pipeline integrates:
+- **[Graphonomy](https://github.com/izakharkin/Graphonomy#inference-point_based_clothing)**  for human parsing and segmentation mask generation.
+- **[ExPose](https://github.com/vchoutas/expose)** to estimate SMPL-X body parameters from the input image.
+- **[SMPL-X Transfer Model](https://github.com/vchoutas/smplx)** SMPL-X model processing and parameter transfer to SMPL model.
+- **[point_based_clothing](https://github.com/UmairAhmadBaltoro/point_based_clothing)** for final point-based human clothing generation.
+
+
+## Pipeline Overview
+
+The inference pipeline can be summarized as:
+
+```text
+Input Image
+    │
+    ├── Graphonomy
+    │      └── Human Segmentation Mask
+    │
+    ├── ExPose
+    │      └── SMPL-X Parameters
+    │
+    └── SMPL-X Transfer
+           │
+           ▼
+Point-Based Clothing Model
+           │
+           ▼
+Generated Clothed Human
+```
+
+Compared with the original implementation, this repository combines the previously separate preprocessing and inference stages into a **unified pipeline**, reducing the need to manually generate segmentation masks and SMPL-X parameters.
 
 <img width="1280" height="611" alt="5 1" src="https://github.com/user-attachments/assets/713a0279-4c14-4f6e-a6b8-6e8ee3992927" />
 
