@@ -1,7 +1,7 @@
-# Point-Based Modeling of Human Clothing
 
- 
 This is Yi Wei code for "Generative learning on point-based modeling for human clothing", that combines [Graphonomy](https://github.com/izakharkin/Graphonomy#inference-point_based_clothing), [ExPose](https://github.com/vchoutas/expose), and [SMPL-X Transfer Model](https://github.com/vchoutas/smplx). The Graphonomy, ExPose, and SMPL-X directory is required to install separately and store in the main (point-based modeling) folder. 
+
+<img width="1280" height="611" alt="5 1" src="https://github.com/user-attachments/assets/713a0279-4c14-4f6e-a6b8-6e8ee3992927" />
 
 # Installation Guide 
 
