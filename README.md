@@ -156,4 +156,17 @@ SMPL-X model generated using Expose:
 
   ``` shell 
   subprocess.run(f'conda run -n py38 python {mydir+"/"}piptest2.py', shell=True)
-  ``` 
+  ```
+
+## Citation
+More details can be found in my FYP published paper:
+```bibtex
+@inproceedings{wei2024implementation,
+  title={Implementation of Cloth Estimation in 2D-3D Human Body Regression Model},
+  author={Wei, Fung Yi and Lim, King Hann and Phang, Jonathan Then Sien and Pang, Po Ken},
+  booktitle={2024 International Conference on Green Energy, Computing and Sustainable Technology (GECOST)},
+  pages={224--228},
+  year={2024},
+  organization={IEEE}
+}
+```
